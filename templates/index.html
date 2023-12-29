@@ -3,33 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button Move</title>
+    <title>Date Invitation</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
+            text-align: center;
         }
 
-        #btnNo {
+        #invitation-text {
             position: absolute;
-            top: 50%;
+            top: 10%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
+            font-size: 24px;
+        }
+
+        .invitation-button {
+            position: absolute;
             padding: 10px 20px;
             cursor: pointer;
             transition: transform 0.3s ease-out;
         }
+
+        #btnYes {
+            top: 50%;
+            left: 40%;
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+
+        #btnNo {
+            top: 50%;
+            left: 60%;
+            background-color: #f44336; /* Red */
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div id="btnNo" onmouseover="moveButton()">NO</div>
+    <div id="invitation-text">Will you go on a date with me?</div>
+    <div id="btnYes" class="invitation-button" onclick="showResponse('Yes')">YES</div>
+    <div id="btnNo" class="invitation-button" onmouseover="moveButton()" onclick="showResponse('No')">NO</div>
 
     <script>
         function moveButton() {
             const button = document.getElementById('btnNo');
             const offsetX = Math.random() * 100 - 50;
             const offsetY = Math.random() * 100 - 50;
-            button.style.transform = `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px)`;
+            button.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+
+            // Disable the button temporarily
+            button.disabled = true;
+            setTimeout(() => {
+                // Re-enable the button after a short delay
+                button.disabled = false;
+            }, 300);
+        }
+
+        function showResponse(response) {
+            if (response === 'Yes') {
+                alert("Will you go on a date with me?\nYou chose: " + response);
+            }
         }
     </script>
 </body>
