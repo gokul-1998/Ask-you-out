@@ -23,7 +23,7 @@
             position: absolute;
             padding: 10px 20px;
             cursor: pointer;
-            transition: transform 0.3s ease-out;
+            transition: transform 0.9s ease-out;
         }
 
         #btnYes {
@@ -44,21 +44,21 @@
 <body>
     <div id="invitation-text">Will you go on a date with me?</div>
     <div id="btnYes" class="invitation-button" onclick="showResponse('Yes')">YES</div>
-    <div id="btnNo" class="invitation-button" onmouseover="moveButton()" onclick="showResponse('No')">NO</div>
+    <div id="btnNo" class="invitation-button" onmouseover="moveButton(); showResponse('No')">NO</div>
 
     <script>
         function moveButton() {
+            console.log("ASsa")
             const button = document.getElementById('btnNo');
-            const offsetX = Math.random() * 100 - 50;
-            const offsetY = Math.random() * 100 - 50;
-            button.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            const offsetX = Math.random() * 80 ; // Adjust the range as needed
+            const offsetY = Math.random() * 80 ; // Adjust the range as needed
+            console.log(offsetX,offsetY)
+            button.style.top = `calc(${offsetY}%)`;
+            button.style.left = `calc( ${offsetX}%)`;
 
             // Disable the button temporarily
-            button.disabled = true;
-            setTimeout(() => {
-                // Re-enable the button after a short delay
-                button.disabled = false;
-            }, 300);
+            
+            
         }
 
         function showResponse(response) {
