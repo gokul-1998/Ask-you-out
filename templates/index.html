@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Move</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #btnNo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="btnNo" onmouseover="moveButton()">NO</div>
+
+    <script>
+        function moveButton() {
+            const button = document.getElementById('btnNo');
+            const offsetX = Math.random() * 100 - 50;
+            const offsetY = Math.random() * 100 - 50;
+            button.style.transform = `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px)`;
+        }
+    </script>
+</body>
+</html>
